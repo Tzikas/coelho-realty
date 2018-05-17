@@ -1,0 +1,57 @@
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+#map {
+    height: 500px;
+}
+
+#main > header {
+    background:url('../../images/house-banner.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:bottom;
+    min-height: 500px;
+}
+
+/* Optional: Makes the sample page fill the window. */
+span.image.fit::before{
+    transition:all .5s;
+    background: rgba(0,0,0,0);
+    color:white;
+    opacity:0;
+    font-size:12px;
+    padding:10px;
+    height:0; 
+    text-align:center;
+    content: '$$$$$';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+}
+
+span.image.fit:hover::before {
+    height:33%;
+    opacity:1;
+
+    background: rgba(0,0,0,0.5);
+}
+
+
+/*
+#floating-panel {
+position: absolute;
+top: 10px;
+left: 25%;
+z-index: 5;
+background-color: #fff;
+padding: 5px;
+border: 1px solid #999;
+text-align: center;
+font-family: 'Roboto','sans-serif';
+line-height: 30px;
+padding-left: 10px;
+}
+#floating-panel {
+margin-left: -52px;
+}*/
+

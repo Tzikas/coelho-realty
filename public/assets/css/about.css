@@ -1,0 +1,36 @@
+video{
+  width:50%; 
+}
+#video{
+  width:100%;
+  text-align:center;
+  background:white;
+  padding:0 100px 100px;  
+
+}
+
+
+@media screen and (max-width: 736px){
+  video{
+    width:100%;
+  }
+  #video{
+    padding:0;
+  }
+}
+
+#main > header.about{
+  background:url('../../images/biz-banner.jpg');
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:bottom;
+}
+.mylivechat_expanded,
+.mylivechat_collapsed,
+.mylivechat_collapsed_text,
+.mylivechat_expanded_text,
+.mylivechat_offline_submit_button{
+	border: none !important;
+    background: #2e3842 !important;
+}
+
