@@ -88,10 +88,42 @@ router.get('/details/:params', function(req, res, next) {
       if (!err){
         const $ = cheerio.load(html);
 
-        
+        let items = []
+
         $('img').attr('src', function(i, currentValue){
-          return 'https://idx.mlspin.com/' + currentValue;
+          //currentValue = currentValue.replace('w=96&h=75','w=964&h=1024')        
+          let url = currentValue; 
+          url = RemoveParameterFromUrl(url, 'w');
+          url = RemoveParameterFromUrl(url, 'h');
+
+          //let item = 'https://idx.mlspin.com/' + currentValue;
+          let item = 'https://idx.mlspin.com/' + url + '&w=946&h=1024';
+          
+          items.push({
+            src: item,
+            w: 964,
+            h: 1024
+          })
+          return item
         });
+
+
+            
+                /*
+		var items = [
+			{
+				src: 'https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg',
+				w: 964,
+				h: 1024
+			},
+			{
+				src: 'https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg',
+				w: 1024,
+				h: 683
+			}
+                ];*/
+
+
 
         $('td, tr, table').each(function() {      // iterate over all elements
           //this.attribs = {};     // remove all attributes
@@ -99,7 +131,7 @@ router.get('/details/:params', function(req, res, next) {
         $('link[rel=stylesheet]').remove();
 
         //console.log(html); 
-        res.render('details', { title: 'Details', html:$.html(), results:true });
+        res.render('details', { title: 'Details', html:$.html(), items:items, results:true });
       }
     });
     
@@ -107,38 +139,9 @@ router.get('/details/:params', function(req, res, next) {
 })
 
 
-/*
-router.get('/results', function(req, res, next) {
-  request('https://idx.mlspin.com/rslts.asp?aid=CN211748&id=59121&min=100000&max=500000&twn=BOST&type=SF&type=CC&type=MF&type=LD&type=CI&type=BU&type=RN&type=MH',
-    function(err, resp, html) {
-      if (!err){
-        const $ = cheerio.load(html);
-        console.log(html); 
-        res.render('results', { title: 'Results', html:html, results:true });
-      }
-    });
-});
-
-
-
-
-
-
-/*
-request('https://idx.mlspin.com/details.asp?mls=72282008&aid=CN211748',
-
-  function(err, resp, html) {
-          if (!err){
-                    const $ = cheerio.load(html);
-                              console.log(html); 
-                      res.render('index', { title: 'Express', html:html });
-
-          }
-  });
-
-});
-*/
-
-
-
+function RemoveParameterFromUrl(url, parameter) {
+  return url
+    .replace(new RegExp('[?&]' + parameter + '=[^&#]*(#.*)?$'), '$1')
+    .replace(new RegExp('([?&])' + parameter + '=[^&]*&'), '$1');
+}
 module.exports = router;

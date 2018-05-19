@@ -181,4 +181,3 @@ function generateRandomPoint(center, radius) {
 //var randomGeoPoints = generateRandomPoints({'lat':42.3601, 'lng':-71.0589}, 10000, 10);
 
 
-

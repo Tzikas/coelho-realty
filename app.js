@@ -18,6 +18,9 @@ hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerPartial('search', '{{search}}')
 
 
+hbs.registerHelper('json', function(context) {
+  return JSON.stringify(context);
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
