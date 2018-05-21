@@ -271,9 +271,13 @@ router.post('/contact', function (req, res) {
 
 			transporter.sendMail(mailOptions, function(error, info){
 				if (error) {
-					console.log(error);
+                    console.log(error);
+                    res.render('contact', { result: 'There was an error, try again.'});
+                    
 				} else {
-					console.log('Push sent: ' + info.response);
+                    console.log('Push sent: ' + info.response);
+                    res.render('contact', { result: 'Your email was successly sent.'});
+                    
 				}
 			});
 })
