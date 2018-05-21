@@ -2,11 +2,11 @@
   <div class="modal-background">
     <div class="modal style5">
       <!--<h2>I'm a Moda</h2>-->
-      <p>Find your home...</p>
+      <p>Find your home</p>
       <span class="close x"></span>
       <!--<svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none"><rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect></svg>-->
 
-      <form action="http://localhost:3000/results" method="get" id="formId" target="_blank" onsubmit="return Form_Validator(this)" name="TheForm" language="JavaScript">
+      <form action="/results" method="get" id="formId" target="_blank" onsubmit="return Form_Validator(this)" name="TheForm" language="JavaScript">
 
 
 	<input type="hidden" name="aid" value="CN211748" /> 
@@ -1944,25 +1944,27 @@
 	      <label for="MF">Multi Family</label>
 	    </span>
 	    <span>
-	      <input type="checkbox" id="LD" name="type" value="LD" checked>
-	      <label for="LD">Land</label>
-	    </span>
-	  </div>
-	  <div>
-	    <span>
-	      <input type="checkbox" id="CI" name="type" value="CI" checked>
-	      <label for="CI">Commercial</label>
-	    </span>
-	    <span>
-	      <input type="checkbox" id="BU" name="type" value="BU" checked>
-	      <label for="BU">Business Opp.</label>
-	    </span>
-	    <span>
 	      <input type="checkbox" id="RN" name="type" value="RN" checked>
 	      <label for="RN">Rental</label>
 	    </span>
+	    
+	  </div>
+	  <div>
 	    <span>
-	      <input type="checkbox" id="MH" name="type" value="MH" checked>
+	      <input type="checkbox" id="CI" name="type" value="CI">
+	      <label for="CI">Commercial</label>
+	    </span>
+	    <span>
+	      <input type="checkbox" id="BU" name="type" value="BU">
+	      <label for="BU">Business Opp.</label>
+	    </span>
+	    <span>
+	      <input type="checkbox" id="LD" name="type" value="LD">
+	      <label for="LD">Land</label>
+	    </span>
+	    
+	    <span>
+	      <input type="checkbox" id="MH" name="type" value="MH">
 	      <label for="MH">Mobile Home</label>
 	    </span>
 	  </div>

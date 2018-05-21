@@ -70,7 +70,7 @@ router.get('/results', function(req, res, next) {
         $('td[align=center][valign=middle]').remove()
         //$('td[align=center]').remove()
 
-        res.render('results', { title: 'Results', html:$.html(), results:true });
+        res.render('results', { title: 'Results', html:$.html(), results:false });
       }
     });
 });
@@ -118,11 +118,11 @@ router.get('/details/:params', function(req, res, next) {
           //
         });
 
-        let mainImage = items ? items[0].src : 'crap'
+        let mainImage = items[0] ? items[0].src : 'crap'
 //        let text = $('td.Details').html(); 
 
         let text = $('td[colspan=2][class=Details][valign=top][width=580]').text().trim()
-        console.log(text)
+        //console.log(text)
 
 
         $('td, tr, table').each(function() {      // iterate over all elements
@@ -135,12 +135,9 @@ router.get('/details/:params', function(req, res, next) {
   
       
         let deets = $('td[valign=top][align=left]').html()
-        let footage = $($('table[border=0][cellspacing=2][cellpadding=0]')[1]).parent().html()
+        let footage = $($('table[border=0][cellspacing=2][cellpadding=0]')[1]).html()        //footage = $(footage).remove('.Details')
 
-
-        //console.log('footage')
-        //console.log(footage)
-
+        footage =  `<table>${footage}</table>`
   // $(text).html(function (i, html) {
    // return '<b>' + html.trim().replace(/(\s+)/g, '</b>$1<b>') + '</b>'
 //})

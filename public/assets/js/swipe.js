@@ -32,3 +32,5 @@
 	$('#container img').on('click', function() {
 		openPhotoSwipe(0); 		
 	});
+
+	$('#save').click(()=>{ alert('Coming Soon!') })
