@@ -53,12 +53,45 @@ table {
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css">
+<link rel="stylesheet" href="../../assets/css/details.css">
+
+<!--
 
 {{{html}}}
 
+-->
+<div class="wrapper style5">
+<section id="container">
 
-<button id="btn">Open Phoasdf stoSwipe</button>
+    <img src={{mainImage}} /> 
+    
+    <section id="right-side-bar">
+        <section id="details">
+            {{{deets}}}
+        </section> 
+        <section id="footage">
+            {{{footage}}}
+        </section>
 
+    </section>
+</section> 
+
+<section id="description" class="inner">
+    <p>{{text}}</p>
+</section> 
+
+
+    <div id="photos">
+        {{{imageHTML}}}
+    </div>
+
+<!--
+    <div id="photos">
+        {{{imageHTML}}}
+    </div>
+-->
+<button id="save"> Save </button>
+</div>
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
@@ -131,5 +164,4 @@ table {
     var items = JSON.parse('{{{json items}}}');
 </script>    
 <script src="../../assets/js/swipe.js"></script>
-            
 

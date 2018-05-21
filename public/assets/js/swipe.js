@@ -1,8 +1,8 @@
 
 
 
-	var openPhotoSwipe = function() {
-		console.log('open') 
+	var openPhotoSwipe = function(i) {
+		console.log('open', i) 
 		var pswpElement = document.querySelectorAll('.pswp')[0];
 
 		// build items array
@@ -11,6 +11,7 @@
 		var options = {
 				 // history & focus options are disabled on CodePen        
 			history: false,
+		    index: i,
 			focus: false,
 
 			showAnimationDuration: 0,
@@ -24,4 +25,10 @@
 
 	//openPhotoSwipe();
 
-	document.getElementById('btn').onclick = openPhotoSwipe;
+	$('#photos').on('click', 'img', function() {
+		openPhotoSwipe($(this).index()); 		
+	});
+	
+	$('#container img').on('click', function() {
+		openPhotoSwipe(0); 		
+	});

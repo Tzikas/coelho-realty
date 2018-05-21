@@ -145,13 +145,13 @@ $(document).ready(function(){
   var inputs = [input0, input1];
 
   noUiSlider.create(keypressSlider, {
-      start: [100000, 500000],
+      start: [5000000, 10000000],
       connect: true,
       direction: 'ltr',
           //tooltips: [true, wNumb({ decimals: 1 })],
       range: {
                   'min': [25000],
-                  '75%':[500000],
+                  '75%':[5000000],
                   'max': [10000000]
       }
   });

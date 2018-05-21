@@ -63,7 +63,9 @@ router.get('/results', function(req, res, next) {
           //this.attribs = {};     // remove all attributes
         });
         //$('td, tr, table').contents().unwrap();
-        
+
+
+
         $('link[rel=stylesheet]').remove();
         $('td[align=center][valign=middle]').remove()
         //$('td[align=center]').remove()
@@ -89,49 +91,63 @@ router.get('/details/:params', function(req, res, next) {
         const $ = cheerio.load(html);
 
         let items = []
-
-        $('img').attr('src', function(i, currentValue){
+        let imageHTML = '' 
+    
+        $('.divThumb img').attr('src', function(i, currentValue){
           //currentValue = currentValue.replace('w=96&h=75','w=964&h=1024')        
-          let url = currentValue; 
-          url = RemoveParameterFromUrl(url, 'w');
-          url = RemoveParameterFromUrl(url, 'h');
+         
+          if(!currentValue.includes('null')){
+           
+           let url = currentValue; 
+            url = RemoveParameterFromUrl(url, 'w');
+            url = RemoveParameterFromUrl(url, 'h');
 
-          //let item = 'https://idx.mlspin.com/' + currentValue;
-          let item = 'https://idx.mlspin.com/' + url + '&w=946&h=1024';
-          
-          items.push({
-            src: item,
-            w: 964,
-            h: 1024
-          })
-          return item
+            //let item = 'https://idx.mlspin.com/' + currentValue;
+            let item = 'https://idx.mlspin.com' + url //+ '&w=946&h=1024';
+
+
+            items.push({
+              src: item,
+              w: 964,
+              h: 1024
+            })
+              imageHTML += `<img src=${item}/>`
+              return null;
+              //return item
+          }
+          //
         });
 
+        let mainImage = items ? items[0].src : 'crap'
+//        let text = $('td.Details').html(); 
 
-            
-                /*
-		var items = [
-			{
-				src: 'https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg',
-				w: 964,
-				h: 1024
-			},
-			{
-				src: 'https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg',
-				w: 1024,
-				h: 683
-			}
-                ];*/
-
+        let text = $('td[colspan=2][class=Details][valign=top][width=580]').text().trim()
+        console.log(text)
 
 
         $('td, tr, table').each(function() {      // iterate over all elements
           //this.attribs = {};     // remove all attributes
         });
+      
+      
         $('link[rel=stylesheet]').remove();
+        $( "style").empty();
+  
+      
+        let deets = $('td[valign=top][align=left]').html()
+        let footage = $($('table[border=0][cellspacing=2][cellpadding=0]')[1]).parent().html()
 
+
+        //console.log('footage')
+        //console.log(footage)
+
+  // $(text).html(function (i, html) {
+   // return '<b>' + html.trim().replace(/(\s+)/g, '</b>$1<b>') + '</b>'
+//})
+
+    
         //console.log(html); 
-        res.render('details', { title: 'Details', html:$.html(), items:items, results:true });
+        res.render('details', { title: 'Details', html:$.html(), deets:deets, text:text, mainImage: mainImage, items:items, footage:footage, results:false, imageHTML:imageHTML });
       }
     });
     
