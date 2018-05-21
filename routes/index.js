@@ -188,7 +188,6 @@ router.post('/contact', function (req, res) {
   smtpTrans = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
-    secure: true,
     auth: {
       user: EMAIL,
       pass: PASSWORD,
