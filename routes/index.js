@@ -222,14 +222,14 @@ router.post('/contact', function (req, res) {
     service: 'gmail',
     host: 'smtp.gmail.com',
     auth: {
-      user: EMAIL,
-      pass: PASSWORD
+      user: 'niko.tzikas@gmail.com',
+      pass: 'canela8888'
     }
   }));
 
   var mailOptions = {
     from:  req.body.name + ' &lt;' + req.body.email + '&gt;',
-    to: EMAIL,
+    to: 'niko.tzikas@gmail.com',
       subject: 'New message',
       text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
   };
