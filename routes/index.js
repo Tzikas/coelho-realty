@@ -3,8 +3,7 @@ const router = express.Router();
 const request = require('request');
 const cheerio = require('cheerio');
 const nodemailer = require('nodemailer');
-const config = require('dotenv').config()
-console.log('config ',config) 
+require('dotenv').config()
 
 
 /* GET home page. */
@@ -184,13 +183,13 @@ router.post('/contact', function (req, res) {
     port: 465,
     secure: true,
     auth: {
-      user: config.parsed.EMAIL,
-      pass: config.parsed.PASSWORD,
+      user: EMAIL,
+      pass: PASSWORD,
     }
   });
   mailOpts = {
     from: req.body.name + ' &lt;' + req.body.email + '&gt;',
-    to: config.parsed.EMAIL,
+    to: EMAIL,
     subject: 'New message',
     text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
   };
