@@ -212,7 +212,7 @@ router.post('/contact', function (req, res) {
     }
   });
 });*/
-
+/*
 
 
 router.post('/contact', function (req, res) {
@@ -245,5 +245,37 @@ router.post('/contact', function (req, res) {
         console.log(response) 
       }
   });
+})*/
+
+
+
+
+var transporter = nodemailer.createTransport({
+	service: 'gmail',
+    	auth: {
+	    user: 'niko.tzikas@gmail.com',
+    	    pass: 'canela8888'
+        }
+});
+
+var mailOptions = {
+	from: 'memry.org',
+	to: 'niko.tzikas@gmail.com',
+	subject: '',
+	text: '!'
+};
+
+
+router.post('/contact', function (req, res) {
+  console.log('post ',EMAIL,PASSWORD); 
+
+			transporter.sendMail(mailOptions, function(error, info){
+				if (error) {
+					console.log(error);
+				} else {
+					console.log('Push sent: ' + info.response);
+				}
+			});
 })
+
 module.exports = router;
