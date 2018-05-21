@@ -215,32 +215,35 @@ router.post('/contact', function (req, res) {
 
 
 
+router.post('/contact', function (req, res) {
+  console.log('post ',EMAIL,PASSWORD); 
 
-var transporter = nodemailer.createTransport(smtpTransport({
-  service: 'gmail',
-  host: 'smtp.gmail.com',
-  auth: {
-    user: EMAIL,
-    pass: PASSWORD
-  }
-}));
-
-var mailOptions = {
-  from:  req.body.name + ' &lt;' + req.body.email + '&gt;',
-  to: EMAIL,
-    subject: 'New message',
-    text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
-};
-
-transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-        console.log(error)
-        res.render('contact', { result: 'There was an error, try again.'});
-      
+  var transporter = nodemailer.createTransport(smtpTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    auth: {
+      user: EMAIL,
+      pass: PASSWORD
     }
-    else {
-        res.render('contact', { result: 'Your email was successly sent.'});
-      console.log(response) 
-    }
-});  
+  }));
+
+  var mailOptions = {
+    from:  req.body.name + ' &lt;' + req.body.email + '&gt;',
+    to: EMAIL,
+      subject: 'New message',
+      text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+          console.log(error)
+          res.render('contact', { result: 'There was an error, try again.'});
+        
+      }
+      else {
+          res.render('contact', { result: 'Your email was successly sent.'});
+        console.log(response) 
+      }
+  });
+})
 module.exports = router;
