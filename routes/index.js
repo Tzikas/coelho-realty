@@ -1,7 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var request = require('request');
-var cheerio = require('cheerio');
+const express = require('express');
+const router = express.Router();
+const request = require('request');
+const cheerio = require('cheerio');
+const nodemailer = require('nodemailer');
+const config = require('dotenv').config()
+console.log('config ',config) 
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -16,6 +20,14 @@ router.get('/about', function(req, res, next) {
 router.get('/featured', function(req, res, next) {
   res.render('featured', { title: 'Featured'});
 })
+router.get('/contact', function(req, res, next) {
+  res.render('contact', { title: 'Contact', result:''});
+})
+
+router.get('/search', function(req, res, next) {
+  res.render('search-page', { title: 'Search'});
+})
+
 
 
 
@@ -38,7 +50,11 @@ router.get('/results', function(req, res, next) {
         $('.idx').attr('href', function(i, currentValue){
           url = currentValue 
           return 'details/' + currentValue;
-        });
+        });router.get('/featured', function(req, res, next) {
+  res.render('featured', { title: 'Featured'});
+})
+
+
 
         $('.ResultsHeading .idx, .ResultsHeading strong').attr('href', function(i, currentValue){
           return url.replace('rslts.asp', 'results').replace('currentpage=5','currentpage='+(i+1));
@@ -157,4 +173,37 @@ function RemoveParameterFromUrl(url, parameter) {
     .replace(new RegExp('[?&]' + parameter + '=[^&#]*(#.*)?$'), '$1')
     .replace(new RegExp('([?&])' + parameter + '=[^&]*&'), '$1');
 }
+
+
+
+// POST route from contact form
+router.post('/contact', function (req, res) {
+  let mailOpts, smtpTrans;
+  smtpTrans = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: config.parsed.EMAIL,
+      pass: config.parsed.PASSWORD,
+    }
+  });
+  mailOpts = {
+    from: req.body.name + ' &lt;' + req.body.email + '&gt;',
+    to: config.parsed.EMAIL,
+    subject: 'New message',
+    text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
+  };
+  smtpTrans.sendMail(mailOpts, function (error, response) {
+    if (error) {
+        console.log(error)
+        res.render('contact', { result: 'There was an error, try again.'});
+      
+    }
+    else {
+        res.render('contact', { result: 'Your email was successly sent.'});
+      console.log(response) 
+    }
+  });
+});
 module.exports = router;
