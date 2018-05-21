@@ -38,7 +38,7 @@ router.get('/search', function(req, res, next) {
 
 
 router.get('/results', function(req, res, next) {
-  
+
   console.log('params ', req.query)
   let params = req.query; 
 
@@ -65,13 +65,13 @@ router.get('/results', function(req, res, next) {
         $('.ResultsHeading .idx, .ResultsHeading strong').attr('href', function(i, currentValue){
           return url.replace('rslts.asp', 'results').replace('currentpage=5','currentpage='+(i+1));
         });
-        
-      
+
+
         $('img').attr('src', function(i, currentValue){
           currentValue = currentValue.replace('w=96&h=75','w=296&h=275')
           $(this).attr('width', 150)
           $(this).attr('height', 150)
-          
+
           return 'https://idx.mlspin.com' + currentValue;
         });
         $('.ResultsHeading img').remove()
@@ -100,7 +100,7 @@ router.get('/results', function(req, res, next) {
 
 router.get('/details/:params', function(req, res, next) {
     console.log('dont get it')
-  
+
   console.log(req.query, req.params)
   let params = req.query; 
 
@@ -114,12 +114,12 @@ router.get('/details/:params', function(req, res, next) {
 
         let items = []
         let imageHTML = '' 
-    
+
         $('.divThumb img').attr('src', function(i, currentValue){
           //currentValue = currentValue.replace('w=96&h=75','w=964&h=1024')        
-         
+
           if(!currentValue.includes('null')){
-           
+
            let url = currentValue; 
             url = RemoveParameterFromUrl(url, 'w');
             url = RemoveParameterFromUrl(url, 'h');
@@ -150,12 +150,12 @@ router.get('/details/:params', function(req, res, next) {
         $('td, tr, table').each(function() {      // iterate over all elements
           //this.attribs = {};     // remove all attributes
         });
-      
-      
+
+
         $('link[rel=stylesheet]').remove();
         $( "style").empty();
-  
-      
+
+
         let deets = $('td[valign=top][align=left]').html()
         let footage = $($('table[border=0][cellspacing=2][cellpadding=0]')[1]).html()        //footage = $(footage).remove('.Details')
 
@@ -164,12 +164,12 @@ router.get('/details/:params', function(req, res, next) {
    // return '<b>' + html.trim().replace(/(\s+)/g, '</b>$1<b>') + '</b>'
 //})
 
-    
+
         //console.log(html); 
         res.render('details', { title: 'Details', html:$.html(), deets:deets, text:text, mainImage: mainImage, items:items, footage:footage, results:false, imageHTML:imageHTML });
       }
     });
-    
+
 
 })
 
@@ -204,7 +204,7 @@ router.post('/contact', function (req, res) {
     if (error) {
         console.log(error)
         res.render('contact', { result: 'There was an error, try again.'});
-      
+
     }
     else {
         res.render('contact', { result: 'Your email was successly sent.'});
@@ -238,7 +238,7 @@ router.post('/contact', function (req, res) {
       if (error) {
           console.log(error)
           res.render('contact', { result: 'There was an error, try again.'});
-        
+
       }
       else {
           res.render('contact', { result: 'Your email was successly sent.'});
@@ -250,36 +250,36 @@ router.post('/contact', function (req, res) {
 
 
 
-var transporter = nodemailer.createTransport({
-	service: 'gmail',
-    	auth: {
-	    user: 'niko.tzikas@gmail.com',
-    	    pass: 'canela8888'
-        }
-});
-
-var mailOptions = {
-	from: 'memry.org',
-	to: 'niko.tzikas@gmail.com',
-	subject: '',
-	text: '!'
-};
 
 
 router.post('/contact', function (req, res) {
-  console.log('post ',EMAIL,PASSWORD); 
+      console.log('post ',EMAIL,PASSWORD); 
+      var transporter = nodemailer.createTransport({
+          service: 'gmail',
+              auth: {
+                  user: EMAIL,
+                  pass: PASSWORD
+              }
+      });
 
-			transporter.sendMail(mailOptions, function(error, info){
-				if (error) {
-                    console.log(error);
-                    res.render('contact', { result: 'There was an error, try again.'});
-                    
-				} else {
-                    console.log('Push sent: ' + info.response);
-                    res.render('contact', { result: 'Your email was successly sent.'});
-                    
-				}
-			});
+      var mailOptions = {
+          from:  req.body.name + ' &lt;' + req.body.email + '&gt;',
+          to: EMAIL,
+          subject: 'New message',
+          text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
+      };
+
+      transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+              console.log(error);
+              res.render('contact', { result: 'There was an error, try again.'});
+
+          } else {
+              console.log('Push sent: ' + info.response);
+              res.render('contact', { result: 'Your email was successly sent.'});
+
+          }
+      });
 })
 
 module.exports = router;
