@@ -183,6 +183,7 @@ function RemoveParameterFromUrl(url, parameter) {
 
 // POST route from contact form
 router.post('/contact', function (req, res) {
+  console.log('post ',EMAIL,PASSWORD); 
   let mailOpts, smtpTrans;
   smtpTrans = nodemailer.createTransport({
     host: 'smtp.gmail.com',
