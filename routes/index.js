@@ -5,6 +5,7 @@ const router = express.Router();
 const request = require('request');
 const cheerio = require('cheerio');
 const nodemailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
 
 const {EMAIL, PASSWORD} = process.env;
 
@@ -178,7 +179,7 @@ function RemoveParameterFromUrl(url, parameter) {
     .replace(new RegExp('[?&]' + parameter + '=[^&#]*(#.*)?$'), '$1')
     .replace(new RegExp('([?&])' + parameter + '=[^&]*&'), '$1');
 }
-
+/*
 
 
 // POST route from contact form
@@ -186,7 +187,8 @@ router.post('/contact', function (req, res) {
   console.log('post ',EMAIL,PASSWORD); 
   let mailOpts, smtpTrans;
   smtpTrans = nodemailer.createTransport({
-	service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
     auth: {
       user: EMAIL,
       pass: PASSWORD,
@@ -209,5 +211,36 @@ router.post('/contact', function (req, res) {
       console.log(response) 
     }
   });
-});
+});*/
+
+
+
+
+var transporter = nodemailer.createTransport(smtpTransport({
+  service: 'gmail',
+  host: 'smtp.gmail.com',
+  auth: {
+    user: EMAIL,
+    pass: PASSWORD
+  }
+}));
+
+var mailOptions = {
+  from:  req.body.name + ' &lt;' + req.body.email + '&gt;',
+  to: EMAIL,
+    subject: 'New message',
+    text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+        console.log(error)
+        res.render('contact', { result: 'There was an error, try again.'});
+      
+    }
+    else {
+        res.render('contact', { result: 'Your email was successly sent.'});
+      console.log(response) 
+    }
+});  
 module.exports = router;
