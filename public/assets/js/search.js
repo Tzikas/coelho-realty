@@ -151,6 +151,8 @@ $(document).ready(function(){
           //tooltips: [true, wNumb({ decimals: 1 })],
       range: {
                   'min': [25000],
+                  '10%':[200000],
+                  
                   '50%':[5000000],
                   'max': [10000000]
       }
