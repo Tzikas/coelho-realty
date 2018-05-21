@@ -1,9 +1,15 @@
+require('dotenv').config()
+
 const express = require('express');
 const router = express.Router();
 const request = require('request');
 const cheerio = require('cheerio');
 const nodemailer = require('nodemailer');
-require('dotenv').config()
+
+const {EMAIL, PASSWORD} = process.env;
+
+console.log('dot env', EMAIL, PASSWORD);
+
 
 
 /* GET home page. */
