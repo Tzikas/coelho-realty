@@ -282,7 +282,7 @@ router.post('/contact', function (req, res) {
                   <li>Area : ${req.body.area}</li>
                   <li>MLS : ${req.body.mls}</li>                  
                 </ul>
-                <a href='https://${req.headers.host}/details/details.asp?mls=${req.body.mls}?aid=${req.body.aid}'>Property Link</a>
+                <a href='https://${req.headers.host}/details/details.asp?mls=${req.body.mls}&aid=${req.body.aid}'>Property Link</a>
           `
       };
 
