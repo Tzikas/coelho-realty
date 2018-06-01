@@ -67,12 +67,10 @@ router.get('/results', function(req, res, next) {
         $('.idx').attr('href', function(i, currentValue){
           url = currentValue 
           return 'details/' + currentValue;
-        });router.get('/featured', function(req, res, next) {
-  res.render('featured', { title: 'Featured'});
-})
-
-
-
+        });
+        router.get('/featured', function(req, res, next) {
+          res.render('featured', { title: 'Featured'});
+        })
         $('.ResultsHeading .idx, .ResultsHeading strong').attr('href', function(i, currentValue){
           return url.replace('rslts.asp', 'results').replace('currentpage=5','currentpage='+(i+1));
         });
@@ -86,8 +84,6 @@ router.get('/results', function(req, res, next) {
           return 'https://idx.mlspin.com' + currentValue;
         });
         $('.ResultsHeading img').remove()
-
-
         //$('td[valign=middle][colspan=6]').append('<hr>')
         //html = $.html().replace(/<(?!hr|img|a\s*\/?)[^>]+>/g, '');
         //console.log(html)
@@ -96,13 +92,9 @@ router.get('/results', function(req, res, next) {
           //this.attribs = {};     // remove all attributes
         });
         //$('td, tr, table').contents().unwrap();
-
-
-
         $('link[rel=stylesheet]').remove();
         $('td[align=center][valign=middle]').remove()
         //$('td[align=center]').remove()
-
         res.render('results', { title: 'Results', html:$.html(), results:false });
       }
     });
