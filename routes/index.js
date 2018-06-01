@@ -27,11 +27,22 @@ router.get('/featured', function(req, res, next) {
   res.render('featured', { title: 'Featured'});
 })
 router.get('/contact', function(req, res, next) {
-  res.render('contact', { title: 'Contact', result:''});
+  console.log(req.query)
+  res.render('contact', { title: 'Contact', result:'', query:req.query});
 })
 
 router.get('/search', function(req, res, next) {
   res.render('search-page', { title: 'Search'});
+})
+
+
+router.get('/buyers', function(req, res, next) {
+  res.render('buyers', { title: 'Search'});
+})
+
+
+router.get('/sellers', function(req, res, next) {
+  res.render('sellers', { title: 'Search'});
 })
 
 
@@ -261,12 +272,26 @@ router.post('/contact', function (req, res) {
                   pass: PASSWORD
               }
       });
-
+  
+      console.log(req.body, 'email', req.headers.host, req.hostname) 
       var mailOptions = {
           from:  req.body.name + ' &lt;' + req.body.email + '&gt;',
           to: EMAIL,
-          subject: 'New message',
-          text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
+          subject: `Coelho Realty ${req.body.message}`,
+   //       text: `name: ${req.body.name} (${req.body.email}) says: ${req.body.message}`,
+          html: `<h3>Coelho Realty Group</h3>
+                <ul>
+                  <li>Name: ${req.body.name}</li>
+                  <li>Email: ${req.body.email}</li>
+                  <li>Tel: ${req.body.tel}</li>
+                  <li>Subject: ${req.body.subject}</li>
+                  <li>Message: ${req.body.message}</li>
+                  <li>Interest: ${JSON.stringify(req.body.type)}</li>
+                  <li>Area : ${req.body.area}</li>
+                  <li>MLS : ${req.body.mls}</li>                  
+                </ul>
+                <a href='https://${req.headers.host}/details/details.asp?mls=${req.body.mls}?aid=${req.body.aid}'>Property Link</a>
+          `
       };
 
       transporter.sendMail(mailOptions, function(error, info){

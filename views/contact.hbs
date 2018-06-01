@@ -1,18 +1,70 @@
-<div class="wrapper style5">
-    <div class="inner">
-      <form action="/contact" id="contact-form" method="post" role="form">
-        <fieldset>
-          <label for="name">Name &#42;</label>
-          <input id="name" name="name" type="text" placeholder="Your name" required="required">
-          <label for="email">Email &#42;</label>
-          <input id="email" name="email" type="text" placeholder="Your email" required="required">
-          <label for="message">Message &#42;</label>
-          <textarea id="message" name="message" placeholder="Enter your message here" rows="3" required="required"></textarea>
-          <br>
-          <button type="submit" class="btn button icon special fa-envelope">Submit</button>
-        </fieldset>
-      </form>
-      {{result}} 
+<style>
+</style>
 
-</div>
-</div>
+<div class="wrapper style5 contact">
+    <div class="inner">
+        <form action="/contact" id="contact-form" method="post" role="form">
+            <fieldset>
+                <label for="name">Name &#42;</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required="required">
+                <label for="email">Email &#42;</label>
+                <input id="email" name="email" type="text" placeholder="Your email" required="required">
+                <label for="tel">Telephone</label>
+                <input id="tel" name="tel" type="text" placeholder="Your telephone">
+                <label for="subject">Subject &#42;</label>
+                <input id="subject" name="subject" type="text" placeholder="Subject"  required="required" >
+
+                <label for="message">Message &#42;</label>
+                <textarea id="message" name="message" placeholder="Enter your message here" rows="3" required="required"></textarea>
+
+
+
+                <div class="house-types">
+                    <div>
+                        <span>
+                            <input type="checkbox" id="buying" name="type" value="buying" >
+                            <label for="buying">Buying</label>
+                        </span>
+                        <span>
+                            <input type="checkbox" id="selling" name="type" value="selling" >
+                            <label for="selling">Selling</label>
+                        </span>
+                        <span>
+                            <input type="checkbox" id="investing" name="type" value="investing" >
+                            <label for="investing">Investing</label>
+                        </span>	    
+                    </div>
+                </div>
+                {{#if query.mls}}
+
+                    <label id="select" for="mls">MLS#</label>
+                    <input id="mls" name="mls" type="text" value="{{query.mls}}">
+
+
+                    <input id="aid" name="aid" type="hidden" value="{{query.aid}}">
+
+                {{else}}
+                    <select id="select">
+                        <option value="" disabled selected>Type of Property</option>                        
+                        <option value="single-family">Single Family</option>
+                        <option value="condiminium">Condiminium</option>
+                        <option value="multi-family">Multi Family</option>
+                        <option value="rental">Rental</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="business">Business Opp.</option>
+                        <option value="land">Land</option>
+                        <option value="mobile-home">Mobile Home</option>
+                        
+                    </select>
+
+                    <label for="area">Which area are you interested in?</label>
+                    <input id="area" name="area" type="text" placeholder="i.e. Boston Ma">
+                {{/if}}                
+
+                    <button type="submit" class="btn button icon special fa-envelope">Submit</button>
+                </fieldset>
+            </form>
+            {{result}} 
+
+        </div>
+    </div>

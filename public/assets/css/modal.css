@@ -781,7 +781,36 @@ label{
 }
 
 
+.contact label{
+  margin: 1.5em 0 0em 0
+
+}
+
 .solo.buttons{
   text-align:center;
   margin: 20vh 0;
+}
+
+.wrapper.contact{
+  padding-top:1em;
+}
+
+
+input[type=radio] {
+    all:unset;
+}
+
+
+#select{
+     margin-top: 14em;
+  
+}
+
+.contact .btn{
+  margin-top:3em;
+  width:100%;
+}
+
+#contact{
+  margin-top:2em;
 }

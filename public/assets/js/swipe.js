@@ -34,3 +34,11 @@
 	});
 
 	$('#save').click(()=>{ alert('Coming Soon!') })
+
+
+	$('#contact').click(()=>{ 
+
+		window.location.assign(`${window.location.origin}/contact${window.location.search}`);
+			
+	})
+
