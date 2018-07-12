@@ -20,7 +20,7 @@ video{
 }
 
 #main > header.about{
-  background:url('../../images/biz-banner.jpg');
+  background:url('../../images/about.jpg');
   background-repeat:no-repeat;
   background-size:cover;
   background-position:bottom;

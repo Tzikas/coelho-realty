@@ -1,0 +1,10 @@
+#main > .search {
+    background:url('../../images/search.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:bottom;
+    min-height: 500px;
+}
+
+
+
