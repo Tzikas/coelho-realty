@@ -20,7 +20,11 @@ video{
 }
 
 #main > header.about{
-  background:url('../../images/about.jpg');
+  background-image: -moz-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/about.jpg");
+  background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/about.jpg");
+  background-image: -ms-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/about.jpg");
+  background-image: linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/about.jpg");
+
   background-repeat:no-repeat;
   background-size:cover;
   background-position:bottom;

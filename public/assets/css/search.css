@@ -1,10 +1,20 @@
 #main > .search {
-    background:url('../../images/search.jpg');
+
+    background-image: -moz-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url("../../images/search.jpg");
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url("../../images/search.jpg");
+    background-image: -ms-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url("../../images/search.jpg");
+    background-image: linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url("../../images/search.jpg");
+
+
     background-size:cover;
     background-repeat:no-repeat;
     background-position:bottom;
     min-height: 500px;
+
+    
 }
 
-
+.wrapper.style5 h2{
+    color:white;
+}
 
