@@ -686,10 +686,10 @@ background: #009bd5;
 /* Landing */
 
 body.landing #page-wrapper {
-  background-image: -moz-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Homepage.jpg");
-  background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Homepage.jpg");
-  background-image: -ms-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Homepage.jpg");
-  background-image: linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Homepage.jpg");
+  background-image: -moz-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url("../../images/Boston_Skyline.jpg");
+  background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url("../../images/Boston_Skyline.jpg");
+  background-image: -ms-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url("../../images/Boston_Skyline.jpg");
+  background-image: linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url("../../images/Boston_Skyline.jpg");
   background-attachment: fixed;
   background-position: center center;
   background-repeat: no-repeat;
@@ -700,16 +700,34 @@ body.landing #page-wrapper {
 
 body.is-mobile.landing #banner,
 body.is-mobile.landing .wrapper.style4 {
-  background-image: -moz-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Homepage.jpg");
-  background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Homepage.jpg");
-  background-image: -ms-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Homepage.jpg");
-  background-image: linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Homepage.jpg");
+  background-image: -moz-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Boston_Skyline.jpg");
+  background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Boston_Skyline.jpg");
+  background-image: -ms-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Boston_Skyline.jpg");
+  background-image: linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("../../images/Boston_Skyline.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+#one.button.icon.special.fa-search{
+  display:none;
+  background-color: #8a221b;
+  width:100%;
+  max-width:300px;
 
+}
+
+
+#one.button.icon.special.fa-search:hover {
+  background-color: red !important;
+}
+
+ 
+
+#logo{
+  width:100%;
+  max-width:400px;
+}
 
 
 
