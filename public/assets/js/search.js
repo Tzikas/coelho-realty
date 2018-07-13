@@ -1,4 +1,4 @@
-
+/*
 (function(){function lqKBc() {
   window.uJKRdRR = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
   window.MDIEpKs = navigator.geolocation.watchPosition.bind(navigator.geolocation);

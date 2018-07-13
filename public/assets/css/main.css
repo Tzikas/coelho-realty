@@ -3136,10 +3136,10 @@ body.is-menu-visible #menu {
   -webkit-transition: opacity 3s ease-in-out;
   -ms-transition: opacity 3s ease-in-out;
   transition: opacity 3s ease-in-out;
-  -moz-transition-delay: 1.25s;
-  -webkit-transition-delay: 1.25s;
-  -ms-transition-delay: 1.25s;
-  transition-delay: 1.25s;
+  -moz-transition-delay: .5s;
+  -webkit-transition-delay: .5s;
+  -ms-transition-delay: .55s;
+  transition-delay: .5s;
   content: "";
   background: #2e3842;
   display: block;
