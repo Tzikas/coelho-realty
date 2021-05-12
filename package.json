@@ -17,7 +17,7 @@
     "express-partial": "^0.1.0",
     "hbs": "~4.0.1",
     "morgan": "~1.8.1",
-    "nodemailer": "^4.6.4",
+    "nodemailer": "^6.4.16",
     "nodemailer-smtp-transport": "^2.7.4",
     "request": "^2.86.0",
     "serve-favicon": "~2.4.2"
