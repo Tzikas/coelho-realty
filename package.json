@@ -8,12 +8,12 @@
   },
 
   "dependencies": {
-    "body-parser": "~1.17.1",
+    "body-parser": "~1.20.1",
     "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "dotenv": "^5.0.1",
-    "express": "~4.15.2",
+    "express": "~4.15.5",
     "express-partial": "^0.1.0",
     "hbs": "~4.0.1",
     "morgan": "~1.8.1",
